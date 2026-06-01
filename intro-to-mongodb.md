@@ -64,13 +64,14 @@ To create a new collection, we use the `db.db.createCollection()` command follow
 db.db.createCollection("institute")
 ```
 
+### Inserting data to collection:
 To insert data into our collection, we use the `insertOne` command to add a single document.
 
 ```
 db.institute.insertOne({name: "New document"})
 ```
 
-
+### Adding multiple documents in one command:
 To add multiple documents in one commnad at the same time, use the `insertMany` command. You must wrap the documents inside square brackets, separated by commas.
 
 ```
@@ -82,3 +83,42 @@ After inserting your data, you can check if your data is safely inside your data
 ```
 db.institute.find()
 ```
+
+# Validation 
+validation is used to create rules for your fields, such as allowed data types and value ranges in order to ensure that all documents in a collection share a similar structure
+
+## Implementing Validation on a New Collection
+This command creates a new collection called `students` and tells MongoDB that every document must have a name which must be a string (text) and an age which must be a integer (whole number). 
+```
+db.createCollection("students", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "name", "age" ],
+         properties: {
+            name: {
+               bsonType: "string",
+               description: "must be a string and is required"
+            },
+            age: {
+               bsonType: "int",
+               description: "must be an integer and is required"
+            }
+         }
+      }
+   }
+})
+```
+
+Testing if validation rules are working but inputting a valid and invalid entry.
+
+Invalid entry:
+<img src="failed-validation.png">
+This error shows that MongoDB successfully rejected the data because it did not comply with our validation rules
+
+
+Valid entry:
+<img src="correct-validation.png">
+To successfully insert a document, both the name as a string and the age as a numerical value must be used 
+
+
