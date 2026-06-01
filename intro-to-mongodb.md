@@ -38,7 +38,7 @@ Disadvantages:
 
 When you open mongosh by default mongosh will open with `test`
 
-<img src="Markdown-imgs/mongosh-test-img.png">
+<img src="mongosh-test-img.png">
 
 
 To create or switch to a database, use the `use` command, followed by the name of the database you want to use. For example, in this case we will use a database called `sparta`
@@ -46,12 +46,12 @@ To create or switch to a database, use the `use` command, followed by the name o
 once we run this command, the `test>` database indiactor should chnage to `sparta>`. 
 
 
-<img src="Markdown-imgs/sparta-database.png">
+<img src="sparta-database.png">
 
 
 To see which database you are currently using, use the `db` command.
 
-<img src="Markdown-imgs/db-command.png">
+<img src="db-command.png">
 
 
 # Creating a new collection 
